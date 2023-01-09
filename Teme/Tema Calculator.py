@@ -17,19 +17,26 @@ while True:
     if operation_sign == "c":
         break
 
-    first_number = float(input("Introduceti primul numar: "))
-    second_number = float(input("Introduceti al doilea numar: "))
+    first_number = (input("Introduceti primul numar: "))
+    second_number = (input("Introduceti al doilea numar: "))
     if operation_sign == "c":
         break
 
-    if operation_sign == "+":
-        print(first_number + second_number)
+    if first_number.isalpha() or second_number.isalpha():
+        print('Introduceti doar numere')
+        continue
+
+    if operation_sign not in ['+', '-', '/', '*']:
+        print("Nu a-ti introdus semnul de operare corect")
+        continue
+    elif operation_sign == "+":
+        print(float(first_number) + float(second_number))
     elif operation_sign == "-":
-        print(first_number - second_number)
+        print(float(first_number) - float(second_number))
     elif operation_sign == "/":
-        print(first_number / second_number)
+        print(float(first_number) / float(second_number))
     elif operation_sign == "*":
-        print(first_number * second_number)
+        print(float(first_number) * float(second_number))
     else:
         print("Nu a-ti introdus semnul de operare corect")
 
