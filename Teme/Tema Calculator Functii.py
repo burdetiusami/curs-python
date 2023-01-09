@@ -30,20 +30,24 @@ while True:
         print("Nu a-ti introdus semnul de operare corect")
         continue
 
-    first_number = float(input("Introduceti primul numar: "))
-    second_number = float(input("Introduceti al doilea numar: "))
+    first_number = (input("Introduceti primul numar: "))
+    second_number = (input("Introduceti al doilea numar: "))
+
+    if first_number.isalpha() or second_number.isalpha():
+        print('Introduceti doar numere')
+        continue
 
     if operation_sign == "+":
-        print("Rezultatul este:", addition(first_number, second_number))
+        print("Rezultatul este:", addition(float(first_number), float(second_number)))
     elif operation_sign == "-":
-        print("Rezultatul este:", substraction(first_number, second_number))
+        print("Rezultatul este:", substraction(float(first_number), float(second_number)))
     elif operation_sign == "/":
         if second_number == 0.0:
             print("Impartirea la 0 nu se poate efectua")
         else:
-            print("Rezultatul este:", division(first_number, second_number))
+            print("Rezultatul este:", division(float(first_number), float(second_number)))
     elif operation_sign == "*":
-        print("Rezultatul este:", multiplication(first_number, second_number))
+        print("Rezultatul este:", multiplication(float(first_number), float(second_number)))
     else:
         print("Nu a-ti introdus semnul de operare corect")
 
