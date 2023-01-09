@@ -42,7 +42,7 @@ while True:
     elif operation_sign == "-":
         print("Rezultatul este:", substraction(float(first_number), float(second_number)))
     elif operation_sign == "/":
-        if second_number == 0.0:
+        if float(second_number) == 0.0:
             print("Impartirea la 0 nu se poate efectua")
         else:
             print("Rezultatul este:", division(float(first_number), float(second_number)))
