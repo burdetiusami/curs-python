@@ -1,9 +1,9 @@
 while True:
 
-    cnp = (input(
+    cnp = input(
         "\nc = opreste programul\n"
         "Introduceti cnp-ul: "
-    ))
+    )
 
     if cnp == "c":
         break
