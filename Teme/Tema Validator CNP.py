@@ -8,7 +8,7 @@ while True:
     if cnp == "c":
         break
 
-    if cnp.isalpha():
+    if not cnp.isnumeric():
         print('Cnp-ul nu poate fi format din litere, ci doar numere')
         continue
 
