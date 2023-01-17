@@ -52,3 +52,10 @@ while True:
                 print("Cnp-ul introdus este corect")
 
 print()
+
+""" O mica observatie:
+la judet nu sunt ccuprinse chiar toate validarile efectuate. Spre ex. nu exista judet 49 sau 50.
+Imi place ca ai folosit map-ul si de asemenea ca ti-ai format slice-urile de la cnp_dict folosin dictionar. Bravo!
+Ce as mai fi facut aici: Cand CNP e valid, da ii dau utilizatorului cateva detalii referitoare la sex, data nasterii
+loc nastere... 
+Dar una peste alta e bine. Bravo!"""
