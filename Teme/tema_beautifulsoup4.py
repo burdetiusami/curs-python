@@ -9,8 +9,8 @@ main = link.find_all('table', attrs={'class':'cursTable'})
 
 dataset = []
 header_list = []
-header_list.insert(0, '-')
-header_list.insert(1, '-')
+header_list.insert(0, 'Numele Valutei')
+header_list.insert(1, 'Prescurtarea Valutei')
 
 for obj in main:
     for table_head in obj.find_all('thead'):
