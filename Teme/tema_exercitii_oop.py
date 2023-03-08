@@ -1,3 +1,5 @@
+import operator
+
 class CatalogPrajituri:
     lista_prajituri = []
 
@@ -8,17 +10,22 @@ class CatalogPrajituri:
         self.lista_prajituri.append(self)
 
     def afisare_prajituri(self, atr):
-        if atr == "nume":
-            lista_sortata = sorted(self.lista_prajituri, key=lambda x: x.nume)
-        elif atr == "gramaj":
-            lista_sortata = sorted(self.lista_prajituri, key=lambda x: x.gramaj)
-        elif atr == "pret":
-            lista_sortata = sorted(self.lista_prajituri, key=lambda x: x.pret)
+        if atr == 'nume':
+            lista_sortata = sorted(self.lista_prajituri, key=operator.attrgetter('nume'))
+        elif atr == 'gramaj':
+            lista_sortata = sorted(self.lista_prajituri, key=operator.attrgetter('gramaj'))
+        elif atr == 'pret':
+            lista_sortata = sorted(self.lista_prajituri, key=operator.attrgetter('pret'))
         else:
             return "Atribut incorect!"
 
+#       insp: https://favtutor.com/blogs/sort-list-of-objects-python
+
         for prajitura in lista_sortata:
-            print(f"{prajitura.nume} , {prajitura.pret} Lei , {prajitura.gramaj} grame")
+            if atr == 'nume' or 'pret':
+                print(f"{prajitura.nume} , {prajitura.pret} Lei , {prajitura.gramaj} grame")
+            if atr == 'gramaj':
+                print(f"{prajitura.nume} , {prajitura.gramaj} grame, {prajitura.pret} Lei ")
 
 
 class Tort(CatalogPrajituri):
@@ -38,8 +45,10 @@ class Tort(CatalogPrajituri):
         print(f'Glazura: {self.glazura}')
 
 
+
 class Fursec(CatalogPrajituri):
     pass
+
 
 # verificare: Creati 3 obiecte ale clasei Tort.
 tort_1 = Tort("Birthday Cake", 100, 1500)
@@ -50,6 +59,7 @@ tort_3 = Tort("Tort cu fructe si ciocolata", 50, 750)
 fursec_1 = Fursec("Fursecuri cu ciocolata", 10, 120)
 fursec_2 = Fursec("Fursecuri cu unt", 8, 90)
 fursec_3 = Fursec("Fursecuri cu gem", 30, 380)
+
 
 # verificare: Afisati prajiturie dupa gramaj.
 tort_2.afisare_prajituri("gramaj")
