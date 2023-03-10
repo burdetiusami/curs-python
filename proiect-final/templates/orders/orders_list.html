@@ -1,0 +1,44 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+{% block content %}
+<a class="btn btn-primary" href="{% url 'orders:create_order' %}">Create Order</a>
+<table class='table'>
+    <thead>
+        <tr>
+            <th>Index</th>
+            <th>Company</th>
+            <th>Adress</th>
+            <th>Cargo Info</th>
+            <th>ETA</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in orders_list %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ item.company }}</td>
+            <td>{{ item.address }}</td>
+            <td>{{ item.cargo_info }}</td>
+            <td>{{ item.eta }}</td>
+            {% if item.status %}
+                <td>On-Going</td>
+            {% else %}
+                <td>Completed</td>
+                {% endif %}
+                <td>
+                    <a class="btn btn-warning" href="{% url 'orders:modify' item.id %}">Edit</a>
+                    {% if item.status %}
+                        <a class="btn btn-secondary" href="{% url 'orders:deactivate' item.id %}">Complete</a>
+                    {% else %}
+                        <a class="btn btn-success" href="{% url 'orders:activate' item.id %}">Uncomplete</a>
+                    {% endif %} 
+                    <a class="btn btn-danger" href="{% url 'orders:delete' item.id %}">Delete</a>
+                </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
