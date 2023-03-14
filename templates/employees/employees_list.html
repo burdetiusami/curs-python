@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<a class="btn btn-primary spaced" href="{% url 'employees:add_employee' %}">Create User</a>
+<table class='table'>
+    <thead>
+        <tr>
+            <th>Index</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Active</th>
+            <th>Created_At</th>
+            <th>Edited_At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in employees_list %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ item.first_name }} {{ item.last_name }}</td>
+            <td>{{ item.username }}</td>
+            <td>{{ item.email }}</td>
+            {% if item.active %}
+                <td>Active</td>
+            {% else %}
+                <td>Inactive</td>
+                {% endif %}
+            <td>{{ item.created }}</td>
+            <td>{{ item.updated }}</td>
+
+                <td>
+                    <a class="btn btn-warning" href="{% url 'employees:modify' item.id %}">Edit</a>
+                    {% if item.active %}
+                        <a class="btn btn-secondary" href="{% url 'employees:deactivate' item.id %}">Deactivate</a>
+                    {% else %}
+                        <a class="btn btn-success" href="{% url 'employees:activate' item.id %}">Activate</a>
+                    {% endif %} 
+                    <a class="btn btn-danger" href="{% url 'employees:delete' item.id %}">Delete</a>
+                </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a class="btn btn-success" href="{% url 'logged_home' %}">Back to main</a>
+{% endblock %}

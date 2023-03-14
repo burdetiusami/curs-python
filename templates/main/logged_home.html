@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container spaced">
+        <div class="users-item col-md-6 col-lg-4 mb-5"><a href="{% url 'employees:employees_list' %}">Employees</a></div>
+        <div class="users-item col-md-6 col-lg-4 mb-5"><a href="{% url 'orders:orders_list' %}">Orders</a></div>
+
+    </div>
+{% endblock %}
