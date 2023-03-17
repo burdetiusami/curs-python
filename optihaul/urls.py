@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.contrib.auth.views import LoginView
 from django.urls import path, include
 from main.views import homepage, logged_home
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,7 +26,8 @@ urlpatterns = [
     path('home/', logged_home, name='logged_home'),
     path('employees/', include('employees.urls')),
     path('orders/', include('orders.urls')),
+    path('fleet/', include('fleet.urls')),
     path('login/', include('django.contrib.auth.urls'), {'next': '/'}, name='login'),
     path('login/', LoginView.as_view(template_name='registration/login.html'), name='login'),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

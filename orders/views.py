@@ -47,7 +47,7 @@ def activate_orders(request, pk):
 
 class DeleteOrdersView(LoginRequiredMixin, DeleteView):
     model = Orders
-    template_name = 'orders/on_delete.html'
+    template_name = 'orders/on_delete_orders.html'
 
     def get_success_url(self):
         return reverse('orders:orders_list')

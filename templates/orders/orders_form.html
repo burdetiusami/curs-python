@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <form class="spaced" method="POST">
+    <form method="POST">
         {% csrf_token %}
         <div class="form-group">
             {% for field in form %}

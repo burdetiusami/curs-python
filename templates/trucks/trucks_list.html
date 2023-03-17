@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<a class="btn btn-primary" href="{% url 'fleet:create_truck' %}">Create Truck</a>
+<div class="container-fluid d-flex justify-content-center">
+<table class='table'>
+    <thead>
+        <tr>
+            <th>Index</th>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th>Mileage</th>
+            <th>Color</th>
+            <th>Image</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in trucks_list %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ item.truck_make }}</td>
+            <td>{{ item.truck_model }}</td>
+            <td>{{ item.year }}</td>
+            <td>{{ item.mileage }}</td>
+            <td>{{ item.color }}</td>
+            {% if item.truck_image %}
+            <td><a href='{{ item.truck_image.url }}'><img src='{{ item.truck_image.url }}' width="80px",  height="50px"></a></td>
+            {% endif %}
+            {% if item.status %}
+                <td>Operational</td>
+            {% else %}
+                <td>Non-Operational</td>
+                {% endif %}
+                <td>
+                    <a class="btn btn-warning" href="{% url 'fleet:modify-truck' item.id %}">Edit</a>
+                    {% if item.status %}
+                        <a class="btn btn-secondary" href="{% url 'fleet:deactivate-truck' item.id %}">Operational</a>
+                    {% else %}
+                        <a class="btn btn-success" href="{% url 'fleet:activate-truck' item.id %}">Non-Operational</a>
+                    {% endif %} 
+                    <a class="btn btn-danger" href="{% url 'fleet:delete-truck' item.id %}">Delete</a>
+                </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+<a class="btn btn-success" href="{% url 'fleet:fleet_index' %}">Back to main</a>
+{% endblock %}

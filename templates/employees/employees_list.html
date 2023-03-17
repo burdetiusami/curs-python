@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block content %}
-<a class="btn btn-primary spaced" href="{% url 'employees:add_employee' %}">Create User</a>
+<a class="btn btn-primary" href="{% url 'employees:add_employee' %}">Create Employee</a>
+<div class="container-fluid d-flex justify-content-center">
 <table class='table'>
     <thead>
         <tr>
@@ -44,5 +45,6 @@
         {% endfor %}
     </tbody>
 </table>
+</div>
 <a class="btn btn-success" href="{% url 'logged_home' %}">Back to main</a>
 {% endblock %}

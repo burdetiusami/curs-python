@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container d-flex justify-content-center">
+        <div class="employee-item"><a  href="{% url 'fleet:trucks_list' %}">Trucks</a></div>
+        <div class="employee-item"><a href="{% url 'fleet:trailers_list' %}">Trailers</a></div>
+    </div>
+{% endblock %}

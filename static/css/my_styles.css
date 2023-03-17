@@ -1,0 +1,8 @@
+.menu-item {
+    width: 30vw;
+    margin: 20px;
+}
+
+.menu-item a{
+    font-size: 1.8rem;
+}

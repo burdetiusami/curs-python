@@ -11,3 +11,6 @@ def orders(request):
 
 def logged_home(request):
     return render(request, 'main/logged_home.html')
+
+def fleet_index(request):
+    return render(request, 'main/fleet_index.html')
