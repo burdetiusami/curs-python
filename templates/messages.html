@@ -1,0 +1,38 @@
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'success' %}
+            <div class="alert alert-success alert-dismissibl fade show" role="alert">
+                <a href="#" class="close" onclick="closeAlert(event)" data-dismiss="alert" aria-label="close">&times;</a>
+                {{ message|safe|escape }}
+            </div>
+        {% elif message.tags == 'error' %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <a href="#" class="close" onclick="closeAlert(event)" data-dismiss="alert" aria-label="close">&times;</a>
+                {{ message|safe }}
+            </div>
+        {% elif message.tags == 'info' %}
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                <a href="#" class="close" onclick="closeAlert(event)" data-dismiss="alert" aria-label="close">&times;</a>
+                {{ message|safe|escape }}
+            </div>
+        {% elif message.tags == 'warning' %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <a href="#" class="close" onclick="closeAlert(event)" data-dismiss="alert" aria-label="close">&times;</a>
+                {{ message|safe|escape }}
+            </div>
+            
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<script>
+    function closeAlert(event) {
+        event.preventDefault();
+        event.target.parentElement.style.display = 'none';
+    }
+
+    setTimeout(fade_out, 3000);
+    function fade_out() {
+        $(".alert").fadeOut().empty();
+    }
+</script>

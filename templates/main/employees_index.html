@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container d-flex justify-content-center mt-5">
+        <a href="{% url 'employees:employee_table' %}" class="btn btn-dark mr-5 mb-5" style="width: 40%;">Employees List</a>
+        <a href="{% url 'register_employee' %}" class="btn btn-dark mb-5" style="width: 40%;">Create Employee</a>
+    </div>
+
+    <style>
+        .btn-dark:hover {
+            background-color: black;
+            color: white;
+        }
+    </style>
+{% endblock %}

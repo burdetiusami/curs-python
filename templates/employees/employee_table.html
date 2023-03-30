@@ -1,0 +1,56 @@
+
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<a class="list-button btn btn-primary mx-auto d-block" href="{% url 'register_employee' %}">Create Employee</a>
+<div class="table-container container-fluid d-flex justify-content-center">
+<table class='table'>
+    <thead class="table-head">
+        <tr>
+            <th>Index</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Created_At</th>
+            <!-- <th>Edited_At</th> -->
+            <th class="list-actions">Actions</th>
+        </tr>
+    </thead>
+    <tbody class="table-body">
+        {% for item in employees %}
+        
+            <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ item.first_name }} {{ item.last_name }}</td>
+                    <td>{{ item.username }}</td>
+                    <td>{{ item.email }}</td>
+                    {% if item.is_active == True %}
+                        <td>Active</td>
+                    {% else %}
+                        <td>Inactive</td>
+                    {% endif %}
+                    <td>{{ item.date_joined }}</td>
+                    <!-- <td>{{ item.updated }}</td> -->
+                    <td>
+                        <a class="btn btn-warning" href="{% url 'employees:modify' item.id %}">Edit</a>
+                        {% if item.is_active %}
+                            <a class="btn btn-secondary" href="{% url 'employees:deactivate' item.id %}">Deactivate</a>
+                        {% else %}
+                            <a class="btn btn-success" href="{% url 'employees:activate' item.id %}">Activate</a>
+                        {% endif %} 
+                        <a class="btn btn-danger" href="{% url 'employees:delete' item.id %}">Delete</a>
+                    </td>
+            </tr>
+       
+        {% endfor %}
+    </tr>
+    
+    </tbody>
+    
+</table>
+</div>
+<a class="list-button btn btn-success mx-auto d-block" href="{% url 'employees:employees_index' %}">Back to main</a>
+{% endblock %}

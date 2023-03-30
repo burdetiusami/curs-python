@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="content-section col-lg-12 col-md-12 col-sm-12 tutorial-style" style="min-height:65vh;">
+    <legend class="border-bottom mb-4">Profile Information:</legend>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="media">
+            <div class="media-body">
+                <h2 class="account-heading">{{ form.instance.username }}
+                    <small class="text-muted">({{ form.instance.status }})</small>
+                </h2>
+                <p class="text-secondary">{{ form.instance.first_name }} {{ form.instance.last_name }}</p>
+                <p class="text-secondary">{{ form.instance.email }}</p>
+                <p class="text-secondary">{{ form.instance.description }}</p>
+            </div>
+        </div>
+
+        {% if user.username == form.instance.username and not request.user.is_employee %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Edit Profile Information</legend>
+            <div class="form-row">
+                <div class="">
+                    <label for="{{ form.first_name.id_for_label }}">First Name:</label>
+                    {{ form.first_name }}
+                </div>
+                <div class="">
+                    <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+                    {{ form.last_name }}
+                </div>
+            </div> 
+            <div class="form-group">
+                <label for="{{ form.email.id_for_label }}">Email:</label>
+                {{ form.email }}
+            </div>
+            <a href="{% url 'password_change' %}">Change password?</a>
+        </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Update</button>
+            </div>
+        {% endif %}
+    </form>
+</div>
+<style>
+    form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.form-group input {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ced4da;
+  width: 100%;
+}
+</style>
+{% endblock content %}

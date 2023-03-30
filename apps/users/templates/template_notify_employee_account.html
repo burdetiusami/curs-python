@@ -1,0 +1,16 @@
+{% autoescape off %}
+Hello {{ user }}!
+
+An account has been made for you by your manager.
+
+This are your credentials.
+usermame: {{user}}
+
+due to security reasons, you must  create a new password for your account. Please follow the links below.
+
+create a new password:
+{{ protocol }}://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}
+
+Sincerely,
+OptiHaul
+{% endautoescape %}

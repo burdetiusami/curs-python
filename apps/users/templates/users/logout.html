@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>You have been logged out</h2>
+    <div class="border-top pt-3"  style="min-height:65vh;">
+        <small class="text-muted">
+            <a href="{% url 'login' %}">Log In Again</a>
+        </small>
+        <hr>
+        <small class="text-muted">
+            <a href="{% url 'home' %}">Go to Homepage</a>
+        </small>
+        <hr>
+    </div>
+{% endblock content %}

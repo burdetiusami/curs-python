@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <div class="container d-flex justify-content-center">
-        <div class="employee-item"><a  href="{% url 'fleet:trucks_list' %}">Trucks</a></div>
-        <div class="employee-item"><a href="{% url 'fleet:trailers_list' %}">Trailers</a></div>
+    <div class="container d-flex justify-content-center mt-5">
+        <a href="{% url 'fleet:trucks_list' %}" class="btn btn-dark mr-5 mb-5" style="width: 40%;">Trucks</a>
+        <a href="{% url 'fleet:trailers_list' %}" class="btn btn-dark mb-5" style="width: 40%;">Trailers</a>
     </div>
+
+    <style>
+        .btn-dark:hover {
+            background-color: black;
+            color: white;
+        }
+    </style>
 {% endblock %}

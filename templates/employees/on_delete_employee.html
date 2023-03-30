@@ -4,7 +4,10 @@
     <form method="POST">
         {% csrf_token %}
         <div class="form-group">
-            <h2>Are you sure you want to delete this employee?</h2>
+            <div class="alert alert-danger" role="alert">
+                <strong>Warning:</strong> This is a hard delete, the employee informations cannot be restored!
+            </div>
+            <h2>Are you certain you want to delete {{ employee.first_name }} {{ employee.last_name }}</h2>
             <button type="submit" class="btn btn-danger">Delete</button>
         </div>
     </form>

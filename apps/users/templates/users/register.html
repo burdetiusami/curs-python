@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <!-- <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Join</legend>
+                {{ form.as_p }}
+            </fieldset> -->
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Register</legend>
+                <div class="form-group">
+                    {{ form.first_name.label_tag }}
+                    {{ form.first_name }}
+                </div>
+                <div class="form-group">
+                    {{ form.last_name.label_tag }}
+                    {{ form.last_name }}
+                </div>
+                <div class="form-group">
+                    {{ form.username.label_tag }}
+                    {{ form.username }}
+                </div>
+                <div class="form-group">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                </div>
+                <div class="form-group">
+                    {{ form.password1.label_tag }}
+                    {{ form.password1 }}
+                </div>
+                <div class="form-group">
+                    {{ form.password2.label_tag }}
+                    {{ form.password2 }}
+                </div>
+            </fieldset>
+
+            By registering, you accept the Terms of Service and Privacy Notice
+
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Register</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+            </small>
+        </div>
+    </div>
+{% endblock content %}

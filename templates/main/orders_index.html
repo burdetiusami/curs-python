@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container d-flex justify-content-center mt-5">
+        <a href="{% url 'orders:orders_list' %}" class="btn btn-dark mr-5 mb-5" style="width: 40%;">Orders List</a>
+        <a href="{% url 'orders:create_order' %}" class="btn btn-dark mb-5" style="width: 40%;">Create</a>
+    </div>
+
+    <style>
+        .btn-dark:hover {
+            background-color: black;
+            color: white;
+        }
+    </style>
+{% endblock %}
